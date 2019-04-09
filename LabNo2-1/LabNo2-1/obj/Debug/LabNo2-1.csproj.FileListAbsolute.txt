@@ -1,0 +1,7 @@
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\bin\Debug\LabNo2-1.exe.config
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\bin\Debug\LabNo2-1.exe
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\bin\Debug\LabNo2-1.pdb
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\obj\Debug\LabNo2-1.csprojAssemblyReference.cache
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\obj\Debug\LabNo2-1.csproj.CoreCompileInputs.cache
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\obj\Debug\LabNo2-1.exe
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo2-1\LabNo2-1\obj\Debug\LabNo2-1.pdb

@@ -1,0 +1,10 @@
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\bin\Debug\WorkWithCollection.exe.config
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\bin\Debug\WorkWithCollection.exe
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\bin\Debug\WorkWithCollection.pdb
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.csprojAssemblyReference.cache
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.Form1.resources
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.Properties.Resources.resources
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.csproj.GenerateResource.cache
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.csproj.CoreCompileInputs.cache
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.exe
+D:\Учеба\БГТУ\2 курс\2 семестр\ООП\Лабы\LabNo1-2\WorkWithCollection\WorkWithCollection\obj\Debug\WorkWithCollection.pdb
