@@ -13,7 +13,7 @@ namespace StructuralPatterns_13_
     {
         public abstract SolidColorBrush Color { get; }
     }
-    public abstract class FigureBorder
+    public abstract class FigureBorderThickness
     {
         public abstract int Thickness { get; }
     }
@@ -31,11 +31,11 @@ namespace StructuralPatterns_13_
     {
         public override SolidColorBrush Color => Brushes.Red;
     }
-    public class ThickBorder : FigureBorder
+    public class ThickBorder : FigureBorderThickness
     {
         public override int Thickness => 10;
     }
-    public class ThinBorder : FigureBorder
+    public class ThinBorder : FigureBorderThickness
     {
         public override int Thickness => 1;
     }
@@ -53,116 +53,64 @@ namespace StructuralPatterns_13_
     //Abstract factory
     public abstract class FigureFactory
     {
-        public abstract string Name { get; }
-        public abstract FigureColor GetFigureColor();
-        public abstract FigureBorder GetFigureBorder();
-        public abstract FigureBorderColor GetFigureBorderColor();
-        public abstract Shape GetShape();
+        public abstract FigureColor FigureColor { get; set; }
+        public abstract FigureBorderThickness FigureBorderThickness { get; set; }
+        public abstract FigureBorderColor FigureBorderColor { get; set; }
+        public abstract Shape GetShape { get; }
     }
 
     //Concrete factories
-    public class ThickBlackGreenRectangle : FigureFactory
+    public class Circle : FigureFactory
     {
-        public override string Name => "Thick black-green rectangle";
-
-        public override FigureBorder GetFigureBorder()
-        {
-            return new ThickBorder();
-        }
-
-        public override FigureBorderColor GetFigureBorderColor()
-        {
-            return new GreenBorderColor();
-        }
-
-        public override FigureColor GetFigureColor()
-        {
-            return new BlackColor();
-        }
-        public override Shape GetShape()
-        {
-            return new Rectangle {StrokeThickness = GetFigureBorder().Thickness, Fill = GetFigureColor().Color, Stroke = GetFigureBorderColor().Color };
-        }
+        public override FigureColor FigureColor { get; set; }
+        public override FigureBorderThickness FigureBorderThickness { get; set; }
+        public override FigureBorderColor FigureBorderColor { get; set; }
+        public override Shape GetShape { get; }
     }
-    public class ThinRedYellowRectangle : FigureFactory
+    public class Rectangle
     {
-        public override string Name => "Thin red-yellow rectangle";
 
-        public override FigureBorder GetFigureBorder()
-        {
-            return new ThinBorder();
-        }
-        public override FigureBorderColor GetFigureBorderColor()
-        {
-            return new YellowBorderColor();
-        }
-        public override FigureColor GetFigureColor()
-        {
-            return new RedColor();
-        }
-        public override Shape GetShape()
-        {
-            return new Rectangle { StrokeThickness = GetFigureBorder().Thickness, Fill = GetFigureColor().Color, Stroke = GetFigureBorderColor().Color};
-        }
     }
-    public class ThickRedGreenCircle : FigureFactory
+    //Builder
+    public abstract class CircleBuilder
     {
-        public override string Name => "Thick red-green circle";
-
-        public override FigureBorder GetFigureBorder()
+        public Circle Circle { get; private set; }
+        public void CreateCircle()
         {
-            return new ThickBorder();
+            Circle = new Circle();
         }
-
-        public override FigureColor GetFigureColor()
-        {
-            return new RedColor();
-        }
-        public override FigureBorderColor GetFigureBorderColor()
-        {
-            return new GreenBorderColor();
-        }
-        public override Shape GetShape()
-        {
-            return new Ellipse { StrokeThickness = GetFigureBorder().Thickness, Fill = GetFigureColor().Color, Stroke = GetFigureBorderColor().Color  };
-        }
+        public abstract void SetFigureColor();
+        public abstract void SetFigureBorderThickness();
+        public abstract void SetFigureBorderColor();
     }
-    public class ThinBlackYellowCircle : FigureFactory
-    {
-        public override string Name => "Thin black-yellow circle";
-
-        public override FigureBorder GetFigureBorder()
-        {
-            return new ThinBorder();
-        }
-        public override FigureBorderColor GetFigureBorderColor()
-        {
-            return new YellowBorderColor();
-        }
-        public override FigureColor GetFigureColor()
-        {
-            return new BlackColor();
-        }
-        public override Shape GetShape()
-        {
-            return new Ellipse { StrokeThickness = GetFigureBorder().Thickness, Fill = GetFigureColor().Color, Stroke = GetFigureBorderColor().Color };
-        }
-    }
-
     //Client
     public class Figure
     {
-        public string Name { get; }
-        private FigureFactory factory;
-        public Figure(FigureFactory _factory)
+        public Circle Create(CircleBuilder circleBuilder)
         {
-            factory = _factory;
-            Name = _factory.Name;
+            circleBuilder.CreateCircle();
+            circleBuilder.SetFigureBorderColor();
+            circleBuilder.SetFigureBorderThickness();
+            circleBuilder.SetFigureColor();
+            return circleBuilder.Circle;
         }
-        public Shape GetShape()
+    }
+
+    public class ThickYellowRedCircle : CircleBuilder
+    {
+        public override void SetFigureBorderColor()
         {
-            Shape shape = factory.GetShape();
-            return shape;
+            this.Circle.FigureBorderColor = new FigureBorderColor
+        }
+
+        public override void SetFigureBorderThickness()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void SetFigureColor()
+        {
+            throw new NotImplementedException();
         }
     }
 }

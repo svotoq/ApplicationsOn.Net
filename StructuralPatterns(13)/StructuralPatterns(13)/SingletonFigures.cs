@@ -15,10 +15,10 @@ namespace StructuralPatterns_13_
         {
             Figures = new ObservableCollection<Figure>
             {
-                new Figure(new ThickRedGreenCircle()),
-                new Figure(new ThinBlackYellowCircle()),
-                new Figure(new ThickBlackGreenRectangle()),
-                new Figure(new ThinRedYellowRectangle())
+                new Figure(new Circle()),
+                //new Figure(new ThinBlackYellowCircle()),
+                //new Figure(new ThickBlackGreenRectangle()),
+                //new Figure(new ThinRedYellowRectangle())
             };
         }
         public static SingletonFigures GetSingletonFigures()
