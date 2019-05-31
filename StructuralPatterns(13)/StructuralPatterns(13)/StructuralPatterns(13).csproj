@@ -58,16 +58,9 @@
     <Compile Include="AddFigure.xaml.cs">
       <DependentUpon>AddFigure.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Circle.xaml.cs">
-      <DependentUpon>Circle.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="SingletonFigures.cs" />
     <Page Include="AddFigure.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Circle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
