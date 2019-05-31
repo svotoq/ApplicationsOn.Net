@@ -1,0 +1,17 @@
+﻿<Application x:Class="LabNo4_5.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LabNo4_5"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Languages\LangEN-en.xaml"/>
+                <ResourceDictionary Source="Languages\LangRU-ru.xaml"/>
+                <ResourceDictionary Source="Resources\StyleGreen.xaml"/>
+                <ResourceDictionary Source="Themes\Purpule.xaml"/>
+                <ResourceDictionary Source="Themes\Black.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="UserContolsWPF_7_.UserControl3"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserContolsWPF_7_"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Slider Name="Slider1" Grid.Column="0" ValueChanged="Slider1_ValueChanged"></Slider>
+        <Button Name="Button1" Grid.Column="1" Content="0" Click="Button1_Click"></Button>
+    </Grid>
+</UserControl>

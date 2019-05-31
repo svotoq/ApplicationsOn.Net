@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LabNo4_5"     
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <system:String x:Key="FileKey">File</system:String>
+    <system:String x:Key="NewKey">New</system:String>
+    <system:String x:Key="OpenKey">Open</system:String>
+    <system:String x:Key="SaveKey">Save</system:String>
+    <system:String x:Key="SaveAsKey">Save as</system:String>
+    <system:String x:Key="ExitKey">Exit</system:String>
+
+    <system:String x:Key="EditKey">Edit</system:String>
+    <system:String x:Key="CutKey">Cut</system:String>
+    <system:String x:Key="CopyKey">Copy</system:String>
+    <system:String x:Key="PasteKey">Paste</system:String>
+
+    <system:String x:Key="LanguageKey">Language</system:String>
+    
+    <system:String x:Key="TextEditorStyleKey">Text editor style</system:String>
+    <system:String x:Key="ToolBarColorKey">Toolbar color</system:String>
+    <system:String x:Key="TextboxColorKey">Textbox color</system:String>
+
+    <system:String x:Key="ColorGrayKey">Gray</system:String>
+    <system:String x:Key="ColorRedKey">Red</system:String>
+    <system:String x:Key="ColorAliceBlueKey">AliceBlue</system:String>
+    <system:String x:Key="ColorWhiteKey">White</system:String>
+
+    <system:String x:Key="ThemeKey">Тема</system:String>
+    <system:String x:Key="PurpuleThemeKey">Purpule</system:String>
+    <system:String x:Key="BlackThemeKey">Black</system:String>
+    
+    <system:String x:Key="NumberOfSymbolsKey">Number of Symbols: </system:String>
+</ResourceDictionary>

@@ -1,0 +1,211 @@
+﻿<Window x:Class="LabNo4_5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabNo4_5"
+        mc:Ignorable="d"
+        Title="StasyanRedactor" Height="450" Width="800" FontFamily="Times New Roman" FontSize="14" Icon="img_431993.ico"
+        Style="{DynamicResource WindowStyle}">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="New_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="Save_Executed"/>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="Close_Executed"/>
+        <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveAs_Executed"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style TargetType="MenuItem">
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True"></Condition>
+                        <Condition Property="IsPressed" Value="True"></Condition>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="Background" Value="Green"></Setter>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Popup">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=RichTextBoxSize, Path=Value}"
+                        Value="5">
+                    <Setter Property="IsOpen" Value="True"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Slider">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseRightButtonDown">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Duration="0:0:0.3"
+                                    Storyboard.TargetProperty="Width"
+                                    To="10" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Duration="0:0:3"
+                                    Storyboard.TargetProperty="Width" To="100" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
+            <Border BorderBrush="Orange" BorderThickness="3" CornerRadius="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStopCollection>
+                            <GradientStop Offset="0" Color="LimeGreen"></GradientStop>
+                            <GradientStop Offset="1" Color="LightBlue"></GradientStop>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <ContentPresenter RecognizesAccessKey="True"></ContentPresenter>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Height="24" Style="{DynamicResource MenuThemeKey}" Grid.ColumnSpan="2">
+            <MenuItem Header="{DynamicResource FileKey}" Height="24">
+                <MenuItem Header="{DynamicResource NewKey}" Command="ApplicationCommands.New"/>
+                <MenuItem Header="{DynamicResource OpenKey}" Command="ApplicationCommands.Open"/>
+                <MenuItem Header="{DynamicResource SaveKey}" Command="ApplicationCommands.Save"/>
+                <MenuItem Header="{DynamicResource SaveAsKey}" Command="ApplicationCommands.SaveAs"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource ExitKey}" Command="ApplicationCommands.Close" />
+            </MenuItem>
+            <MenuItem Header="{DynamicResource EditKey}">
+                <MenuItem Header="{DynamicResource CutKey}" Command="ApplicationCommands.Cut"/>
+                <MenuItem Header="{DynamicResource CopyKey}" Command="ApplicationCommands.Copy"/>
+                <MenuItem Header="{DynamicResource PasteKey}" Command="ApplicationCommands.Paste"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource LanguageKey}">
+                <MenuItem Header="Русский" Click="Russian_Click" />
+                <MenuItem Header="English" Click="English_Click"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource TextEditorStyleKey}">
+                <MenuItem Header="{DynamicResource ToolBarColorKey}">
+                    <MenuItem Header="{DynamicResource ColorGrayKey}" Click="ToolBar_ColorGray"></MenuItem>
+                    <MenuItem Header="{DynamicResource ColorRedKey}" Click="ToolBar_ColorRed"></MenuItem>
+                    <MenuItem Header="{DynamicResource ColorWhiteKey}" Click="ToolBar_ColorWhite"></MenuItem>
+                    <MenuItem Header="{DynamicResource ColorAliceBlueKey}" Click="ToolBar_ColorBlue"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource TextboxColorKey}">
+                    <MenuItem Header="{DynamicResource ColorGrayKey}" Click="TextBox_ColorGray"></MenuItem>
+                    <MenuItem Header="{DynamicResource ColorRedKey}" Click="TextBox_ColorRed"></MenuItem>
+                    <MenuItem Header="{DynamicResource ColorWhiteKey}" Click="TextBox_ColorWhite"></MenuItem>
+                    <MenuItem Header="{DynamicResource ColorAliceBlueKey}" Click="TextBox_ColorBlue"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource ThemeKey}">
+                    <MenuItem Header="{DynamicResource PurpuleThemeKey}" Click="SetPurpuleTheme_Click"></MenuItem>
+                    <MenuItem Header="{DynamicResource BlackThemeKey}" Click="SetBlackTheme_Click"></MenuItem>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1" Name="ToolBarPanel" Style="{DynamicResource ToolBarThemeKey}" Grid.ColumnSpan="2">
+            <ToggleButton Command="EditingCommands.ToggleBold" Name="btnBold">
+                <Image Source="Img\Bold.png" Width="16" Height="16" />
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleItalic" Name="btnItalic">
+                <Image Source="Img\Italic.png" Width="16" Height="16" />
+            </ToggleButton>
+            <ToggleButton Command="EditingCommands.ToggleUnderline" Name="btnUnderline">
+                <Image Source="Img\Underline.png" Width="16" Height="16" />
+            </ToggleButton>
+            <Separator />
+            <ComboBox Name="cmbFontFamily" Width="150" SelectionChanged="cmbFontFamily_SelectionChanged" IsReadOnly="True" />
+            <Slider VerticalAlignment="Center" Name="cmbFontSize" Width="150" ValueChanged="cmbFontSize_ValueChanged" Maximum="72" Minimum="1" Value="14" />
+            <Label Name="FontSizeLable" Width="30" Content="14"></Label>
+            <Separator />
+            <Button Name="ColorPicker" Background="Black" Width="25" Height="25" Click="Color_Click"></Button>
+            <Separator />
+            <Button Name="Undo" Command="ApplicationCommands.Undo">
+                <Image Source="Img\Undo.png" Width="16" Height="16"/>
+            </Button>
+            <Button Name="Redo" Command="ApplicationCommands.Redo">
+                <Image Source="Img\Redo.png" Width="16" Height="16"/>
+            </Button>
+            <Separator/>
+            <Button Name="TextAlignLeft" Template="{StaticResource ButtonTemplate}" Command="EditingCommands.AlignLeft">
+                <Image Source="Img\AlignLeft.png" Width="16" Height="16"/>
+            </Button>
+            <Button Name="TextAlignCenter" Template="{StaticResource ButtonTemplate}" Command="EditingCommands.AlignCenter">
+                <Image Source="Img\AlignCenter.png" Width="16" Height="16"/>
+            </Button>
+            <Button Name="TextAlignRight" Template="{StaticResource ButtonTemplate}" Command="EditingCommands.AlignRight">
+                <Image Source="Img\AlignRight.png" Width="16" Height="16"/>
+            </Button>
+            <Button Name="TextAlignJustify" Template="{StaticResource ButtonTemplate}" Command="EditingCommands.AlignJustify">
+                <Image Source="Img\AlignJustify.png" Width="16" Height="16"/>
+            </Button>
+            <Separator/>
+            <ComboBox Name="LastOpenedFilesComboBox" IsReadOnly="True" Width="100" SelectionChanged="LastOpenedFilesComboBox_SelectionChanged"></ComboBox>
+        </ToolBar>
+        <RichTextBox Grid.Row="2" Style="{DynamicResource RichTextBoxThemeKey}"
+            Name="rtbEditor" SpellCheck.IsEnabled="True" Language="ru-ru" 
+                     PreviewTextInput="RtbEditor_PreviewTextInput"
+                     AllowDrop="True"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible" RenderTransformOrigin="0,0" Grid.ColumnSpan="2">
+            <RichTextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="{Binding Path=Value, ElementName=RichTextBoxSize}" ScaleY="{Binding Path=Value, ElementName=RichTextBoxSize}"/>
+                </TransformGroup>
+            </RichTextBox.RenderTransform>
+            <FlowDocument>
+                <Paragraph/>
+            </FlowDocument>
+        </RichTextBox>
+        <StatusBar Grid.Row="3" Background="{StaticResource StatusBarStyle}" Grid.ColumnSpan="2">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="1.45*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0" HorizontalContentAlignment="Left">
+                <TextBlock Name="StatusBar" Text="{DynamicResource CountOfSymbolsKey}" />
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                <TextBlock Name="NumberOfSymbols" HorizontalAlignment="Left"></TextBlock>
+            </StatusBarItem>
+            <Separator Grid.Column="2" Width="2"></Separator>
+            <StatusBarItem Grid.Column="3" HorizontalAlignment="Left">
+                <TextBlock Name="FilePathTextBlock" />
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="4" HorizontalContentAlignment="Right">
+                <Slider Name="RichTextBoxSize" Width="100" Maximum="5" Minimum="1" Value="1" />
+            </StatusBarItem>
+        </StatusBar>
+        <Popup x:Name="popup1" StaysOpen="False" Placement="Mouse"  
+         AllowsTransparency="True" Grid.ColumnSpan="2"  >
+            <TextBlock TextWrapping="Wrap" Width="60" Background="Green" Opacity="0.8" TextAlignment="Center" Text="MAX">
+            </TextBlock>
+        </Popup>
+    </Grid>
+</Window>

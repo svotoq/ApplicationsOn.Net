@@ -1,0 +1,31 @@
+﻿<Window x:Class="StructuralPatterns_13_.AddFigure"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StructuralPatterns_13_"
+        mc:Ignorable="d"
+        Title="AddFigure" Height="200" Width="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Тип фигуры</TextBlock>
+        <ComboBox Grid.Row="1" ItemsSource="{Binding Figures}" SelectedItem="{Binding Figure}"
+                  DisplayMemberPath="Name"></ComboBox>
+        <StackPanel Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Количество: "></TextBlock>
+            <TextBlock Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        </StackPanel>
+
+        <Slider Grid.Row="3" Value="{Binding Count}" Maximum="100" Minimum="1"></Slider>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding AcceptCommand}" Margin="5 10">Accept</Button>
+            <Button Command="{Binding CancelCommand}" Margin="5 10">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

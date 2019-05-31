@@ -107,11 +107,11 @@
                 <ItemsPanelTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.05*"/>
+                            <ColumnDefinition Width="1.45*"/>
+                            <ColumnDefinition Width="0.5*"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
@@ -119,7 +119,7 @@
             <StatusBarItem Grid.Column="0" HorizontalContentAlignment="Left">
                 <TextBlock Name="StatusBar" Text="{DynamicResource CountOfSymbolsKey}" />
             </StatusBarItem>
-            <StatusBarItem Grid.Column="1" Margin="0,0,86,0">
+            <StatusBarItem Grid.Column="1">
                 <TextBlock Name="NumberOfSymbols" HorizontalAlignment="Left"></TextBlock>
             </StatusBarItem>
             <Separator Grid.Column="2" Width="2"></Separator>

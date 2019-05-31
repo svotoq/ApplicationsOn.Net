@@ -6,7 +6,41 @@
         xmlns:local="clr-namespace:UserContolsWPF_7_"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Window.CommandBindings>
+        <CommandBinding Command="local:WindowCommands.Exit" Executed="Exit_Executed"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <local:Check Price="500" Title="Булочка" x:Key="Bulichka"/>
+    </Window.Resources>
+    
+    <Grid DataContext="{StaticResource Bulichka}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <local:UserControl1  Grid.Row="0" Grid.Column="0"/>
+        <local:UserControl2  Grid.Row="0" Grid.Column="1" Height="30"/>
+        <local:UserControl3  Grid.Row="1" Grid.Column="0" Height="30"/>
+        <Button Grid.Row="1" Grid.Column="1" 
+                Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                Command="local:WindowCommands.Exit">Exit</Button>
+        <TextBox Grid.Row="1" Grid.Column="1" 
+                 FontSize="16" Width="120" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  Text="{Binding Price, Mode=TwoWay}"/>
+        <Label Grid.Column="1" Grid.Row="1" 
+               Width="80" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"
+               Content="{Binding Title}" />
+        <Button Grid.Row="1" Grid.Column="1"
+                Width="75" Height="30" Content="Check" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Margin="0,0,0,30"
+                x:Name="Checkbut" Click="Checkbut_Click"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" PreviewMouseDown="Control_MouseDown">
+            <Button x:Name="button1" Width="80" Height="50" PreviewMouseDown="Control_MouseDown" Margin="10" >
+                <Ellipse Width="30" Height="30" Fill="Red" PreviewMouseDown="Control_MouseDown" />
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>
