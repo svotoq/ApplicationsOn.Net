@@ -55,11 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCustomizableCircle.xaml.cs">
+      <DependentUpon>AddCustomizableCircle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddFigure.xaml.cs">
       <DependentUpon>AddFigure.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CircleBuilder.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="MyColor.cs" />
     <Compile Include="SingletonFigures.cs" />
+    <Page Include="AddCustomizableCircle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddFigure.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

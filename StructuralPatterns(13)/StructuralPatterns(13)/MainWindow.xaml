@@ -8,18 +8,17 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="90*"></ColumnDefinition>
+            <ColumnDefinition Width="20*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="140*"></RowDefinition>
-        </Grid.RowDefinitions>
         <StackPanel Grid.Column="0"
             Orientation="Vertical"
             VerticalAlignment="Top" HorizontalAlignment="Center">
             <Button Command="{Binding AddFigureCommand}"
-                    CommandParameter="{Binding}" Margin="0 0 0 10">Add Figuries</Button>
+                    CommandParameter="{Binding}" Margin="0 10 0 10">Add Figuries</Button>
             <Button Command="{Binding ClearCommand}" Margin="0 0 0 10">Clear</Button>
+            <Button Command="{Binding AddCustomizableFigureCommand}"
+                    CommandParameter="{Binding}" Margin="0 0 0 10">Add customizable figure</Button>
         </StackPanel>
         <Grid Grid.Column="1" x:Name="FigureGrid">
             <Grid.ColumnDefinitions>
